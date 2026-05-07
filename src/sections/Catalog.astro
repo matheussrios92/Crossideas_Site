@@ -1,0 +1,95 @@
+---
+import { getCollection } from 'astro:content';
+import ProductCard from '../components/ProductCard.astro';
+
+const allProducts = await getCollection('products');
+const categories = ['Todos', '3D Militares', '3D Esportivos'] as const;
+---
+
+<section id="catalogo" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
+        Nosso Portfólio
+      </p>
+      <h2 class="section-heading">Catálogo de Peças 3D</h2>
+      <p class="section-subheading max-w-2xl mx-auto">
+        Explore nossa linha de troféus e brindes personalizados para sua organização.
+      </p>
+
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap justify-center gap-3 mt-8" id="catalog-filters">
+        {
+          categories.map((cat) => (
+            <button
+              class="filter-btn px-5 py-2 rounded-full border-2 font-medium text-sm transition-all duration-200"
+              class:list={[
+                cat === 'Todos'
+                  ? 'border-accent bg-accent text-white'
+                  : 'border-gray-300 text-[#6B7280] hover:border-accent hover:text-accent',
+              ]}
+              data-filter={cat}
+            >
+              {cat}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        allProducts.map((product) => (
+          <div class="product-item" data-category={product.data.category}>
+            <ProductCard
+              title={product.data.title}
+              category={product.data.category}
+              description={product.data.description}
+              material={product.data.material}
+              image={product.data.image}
+              featured={product.data.featured}
+            />
+          </div>
+        ))
+      }
+    </div>
+
+    {
+      allProducts.length === 0 && (
+        <p class="text-center text-[#6B7280] mt-8">
+          Nenhum produto cadastrado ainda. Adicione produtos via painel CMS.
+        </p>
+      )
+    }
+  </div>
+</section>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const productItems = document.querySelectorAll('.product-item');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter')!;
+
+      // Update button styles
+      filterBtns.forEach((b) => {
+        b.classList.remove('border-accent', 'bg-accent', 'text-white');
+        b.classList.add('border-gray-300', 'text-[#6B7280]');
+      });
+      btn.classList.remove('border-gray-300', 'text-[#6B7280]');
+      btn.classList.add('border-accent', 'bg-accent', 'text-white');
+
+      // Filter products
+      productItems.forEach((item) => {
+        const el = item as HTMLElement;
+        if (filter === 'Todos' || el.dataset.category === filter) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

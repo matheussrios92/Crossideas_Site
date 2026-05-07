@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import ReviewCard from '../components/ReviewCard.astro';
+
+const allReviews = await getCollection('reviews');
+---
+
+<section id="avaliacoes" class="py-24 bg-brand-light">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
+        Depoimentos
+      </p>
+      <h2 class="section-heading">O que nossos clientes dizem</h2>
+      <p class="section-subheading max-w-2xl mx-auto">
+        Veja como as organizações que trabalham conosco avaliam nosso serviço.
+      </p>
+    </div>
+
+    {
+      allReviews.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {allReviews.map((review) => (
+            <ReviewCard
+              name={review.data.name}
+              role={review.data.role}
+              body={review.data.body}
+              rating={review.data.rating}
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="text-center text-[#6B7280]">
+          Nenhuma avaliação cadastrada ainda.
+        </p>
+      )
+    }
+  </div>
+</section>

@@ -1,0 +1,58 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+locale: "pt"
+
+collections:
+  - name: "products"
+    label: "Peças do Catálogo"
+    folder: "src/content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nome da Peça", name: "title", widget: "string" }
+      - label: "Categoria"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "3D Militares", value: "3D Militares" }
+          - { label: "3D Esportivos", value: "3D Esportivos" }
+      - { label: "Descrição Curta", name: "description", widget: "text" }
+      - label: "Material Sugerido"
+        name: "material"
+        widget: "string"
+        hint: "Ex: PLA, ABS, Resina"
+      - { label: "Imagem Principal", name: "image", widget: "image" }
+      - label: "Destaque (Mais Vendido)"
+        name: "featured"
+        widget: "boolean"
+        default: false
+
+  - name: "reviews"
+    label: "Avaliações"
+    folder: "src/content/reviews"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nome do Cliente", name: "name", widget: "string" }
+      - { label: "Empresa / Cargo", name: "role", widget: "string" }
+      - { label: "Texto da Avaliação", name: "body", widget: "text" }
+      - label: "Nota (1 a 5)"
+        name: "rating"
+        widget: "number"
+        min: 1
+        max: 5
+        value_type: "int"
+
+  - name: "faq"
+    label: "FAQ"
+    folder: "src/content/faq"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Pergunta", name: "question", widget: "string" }
+      - { label: "Resposta", name: "answer", widget: "text" }

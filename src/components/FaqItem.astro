@@ -1,0 +1,74 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+  index: number;
+}
+
+const { question, answer, index } = Astro.props;
+const itemId = `faq-item-${index}`;
+const answerId = `faq-answer-${index}`;
+---
+
+<div class="border border-gray-200 rounded-xl overflow-hidden">
+  <button
+    class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left bg-white hover:bg-gray-50 transition-colors duration-200 group"
+    aria-expanded="false"
+    aria-controls={answerId}
+    id={itemId}
+  >
+    <span class="font-semibold text-brand-dark text-base pr-4">{question}</span>
+    <svg
+      class="faq-icon w-5 h-5 text-accent flex-shrink-0 transition-transform duration-300"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+
+  <div
+    id={answerId}
+    role="region"
+    aria-labelledby={itemId}
+    class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
+  >
+    <div class="px-6 py-4 bg-gray-50 border-t border-gray-100">
+      <p class="text-[#374151] text-sm leading-relaxed">{answer}</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+      const answerId = trigger.getAttribute('aria-controls')!;
+      const answer = document.getElementById(answerId)!;
+      const icon = trigger.querySelector('.faq-icon') as HTMLElement;
+
+      // Close all others
+      document.querySelectorAll('.faq-trigger').forEach((other) => {
+        if (other !== trigger) {
+          other.setAttribute('aria-expanded', 'false');
+          const otherId = other.getAttribute('aria-controls')!;
+          const otherAnswer = document.getElementById(otherId)!;
+          const otherIcon = other.querySelector('.faq-icon') as HTMLElement;
+          otherAnswer.style.maxHeight = '0';
+          otherIcon?.classList.remove('rotate-180');
+        }
+      });
+
+      if (isExpanded) {
+        trigger.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = '0';
+        icon?.classList.remove('rotate-180');
+      } else {
+        trigger.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        icon?.classList.add('rotate-180');
+      }
+    });
+  });
+</script>

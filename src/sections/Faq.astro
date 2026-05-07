@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import FaqItem from '../components/FaqItem.astro';
+
+const allFaqs = await getCollection('faq');
+---
+
+<section id="faq" class="py-24 bg-brand-light">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
+        Dúvidas
+      </p>
+      <h2 class="section-heading">Perguntas Frequentes</h2>
+      <p class="section-subheading">
+        Encontre respostas para as dúvidas mais comuns sobre nossos produtos e processo.
+      </p>
+    </div>
+
+    {
+      allFaqs.length > 0 ? (
+        <div class="space-y-3">
+          {allFaqs.map((item, index) => (
+            <FaqItem
+              question={item.data.question}
+              answer={item.data.answer}
+              index={index}
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="text-center text-[#6B7280]">
+          Nenhuma pergunta cadastrada ainda.
+        </p>
+      )
+    }
+
+    <!-- CTA -->
+    <div class="text-center mt-12">
+      <p class="text-[#6B7280] mb-4">Ainda tem dúvidas?</p>
+      <a href="#contato" class="btn-primary inline-block">Falar com a equipe</a>
+    </div>
+  </div>
+</section>
