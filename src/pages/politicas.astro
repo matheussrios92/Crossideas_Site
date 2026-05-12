@@ -1,0 +1,294 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+const sections = [
+  { id: 'politica-de-reembolso', label: 'Política de Reembolso' },
+  { id: 'politica-de-privacidade', label: 'Política de Privacidade' },
+  { id: 'termos-de-servico', label: 'Termos de Serviço' },
+  { id: 'politica-de-frete', label: 'Política de Frete' },
+  { id: 'informacoes-de-contato', label: 'Informações de Contato' },
+];
+---
+
+<Layout
+  title="Políticas — Crossideas"
+  description="Políticas de reembolso, privacidade, termos de serviço, frete e informações de contato da Crossideas."
+>
+  <Header />
+
+  <main class="pt-24 pb-20 bg-brand-light">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Cabeçalho da página -->
+      <div class="text-center mb-14">
+        <p class="text-secondary font-semibold text-sm uppercase tracking-widest mb-3">
+          Transparência & Confiança
+        </p>
+        <h1 class="text-4xl md:text-5xl font-black text-brand-dark mb-4">
+          Políticas e Termos
+        </h1>
+        <p class="text-[#6B7280] text-lg max-w-xl mx-auto">
+          Todas as informações sobre nossas políticas em um só lugar.
+        </p>
+      </div>
+
+      <!-- Navegação interna -->
+      <nav class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-14">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[#6B7280] mb-4">
+          Ir para
+        </p>
+        <ul class="flex flex-wrap gap-3">
+          {sections.map((s) => (
+            <li>
+              <a
+                href={`#${s.id}`}
+                class="inline-block text-sm font-medium text-brand-dark border border-brand-dark/20 hover:bg-brand-dark hover:text-white px-4 py-2 rounded-full transition-colors duration-200"
+              >
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Seções -->
+      <div class="space-y-16">
+
+        <!-- Política de Reembolso -->
+        <section id="politica-de-reembolso" class="scroll-mt-28">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/>
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-brand-dark">Política de Reembolso</h2>
+          </div>
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 prose prose-gray max-w-none">
+            <p>Por se tratar de produtos <strong>personalizados e produzidos sob demanda</strong>, a Crossideas segue as diretrizes do Código de Defesa do Consumidor (CDC) com as seguintes condições:</p>
+
+            <h3>Direito de arrependimento</h3>
+            <p>O prazo de 7 dias para arrependimento previsto no Art. 49 do CDC aplica-se apenas a compras realizadas fora do estabelecimento comercial. Para produtos personalizados, este direito <strong>não se aplica</strong> após o início da produção, conforme Art. 5º do Decreto 7.962/2013.</p>
+
+            <h3>Cancelamento antes da produção</h3>
+            <p>Pedidos cancelados antes do início da produção são reembolsados integralmente em até <strong>5 dias úteis</strong>.</p>
+
+            <h3>Defeitos ou erros de fabricação</h3>
+            <p>Caso o produto entregue apresente defeito de fabricação ou divergência do briefing aprovado:</p>
+            <ul>
+              <li>Entre em contato em até <strong>7 dias corridos</strong> após o recebimento.</li>
+              <li>Envie fotos e descrição do problema para nosso e-mail ou WhatsApp.</li>
+              <li>Realizaremos a reimpressão sem custo adicional ou reembolso integral, a critério do cliente.</li>
+            </ul>
+
+            <h3>Como solicitar</h3>
+            <p>Entre em contato via WhatsApp <strong>(11) 98262-1165</strong> ou pelo e-mail <strong>contato@crossideas.com.br</strong> com o número do pedido e descrição da solicitação.</p>
+          </div>
+        </section>
+
+        <!-- Política de Privacidade -->
+        <section id="politica-de-privacidade" class="scroll-mt-28">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-brand-dark">Política de Privacidade</h2>
+          </div>
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 prose prose-gray max-w-none">
+            <p>A Crossideas respeita sua privacidade e está comprometida com a proteção dos seus dados pessoais, em conformidade com a <strong>Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018)</strong>.</p>
+
+            <h3>Quais dados coletamos</h3>
+            <ul>
+              <li>Nome completo, e-mail, telefone e empresa (fornecidos via formulário de contato).</li>
+              <li>Dados de navegação (cookies técnicos para funcionamento do site).</li>
+            </ul>
+
+            <h3>Como usamos seus dados</h3>
+            <ul>
+              <li>Responder orçamentos e atender solicitações de clientes.</li>
+              <li>Enviar comunicações sobre o andamento do pedido.</li>
+              <li>Melhorar nossos serviços e experiência no site.</li>
+            </ul>
+
+            <h3>Compartilhamento</h3>
+            <p>Não vendemos, alugamos ou compartilhamos seus dados com terceiros para fins comerciais. Dados podem ser compartilhados apenas com parceiros logísticos estritamente necessários para a entrega do pedido.</p>
+
+            <h3>Seus direitos</h3>
+            <p>Você pode, a qualquer momento, solicitar acesso, correção ou exclusão dos seus dados enviando um e-mail para <strong>contato@crossideas.com.br</strong>.</p>
+
+            <h3>Cookies</h3>
+            <p>Utilizamos apenas cookies técnicos essenciais para o funcionamento do site. Não utilizamos cookies de rastreamento ou publicidade.</p>
+          </div>
+        </section>
+
+        <!-- Termos de Serviço -->
+        <section id="termos-de-servico" class="scroll-mt-28">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-brand-dark/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-brand-dark">Termos de Serviço</h2>
+          </div>
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 prose prose-gray max-w-none">
+            <p>Ao solicitar um orçamento ou efetuar um pedido na Crossideas, o cliente concorda com os seguintes termos:</p>
+
+            <h3>Aprovação do briefing</h3>
+            <p>Todo pedido passa por uma etapa de <strong>aprovação do briefing</strong> antes de iniciar a produção. A produção só começa após confirmação escrita do cliente (via e-mail ou WhatsApp).</p>
+
+            <h3>Propriedade intelectual</h3>
+            <p>O cliente é responsável por garantir que logotipos, brasões e demais elementos gráficos fornecidos para personalização são de sua titularidade ou que possui autorização de uso. A Crossideas não se responsabiliza por eventuais violações de direitos de terceiros.</p>
+
+            <h3>Variações de cor e acabamento</h3>
+            <p>Peças impressas em 3D podem apresentar <strong>pequenas variações</strong> de cor, textura ou dimensão em relação à visualização digital, dentro das tolerâncias técnicas do processo de impressão.</p>
+
+            <h3>Prazos</h3>
+            <p>Os prazos de produção informados no orçamento são estimativas e podem variar conforme complexidade do projeto e volume de pedidos. Em caso de atraso relevante, o cliente será notificado previamente.</p>
+
+            <h3>Pedidos em lote</h3>
+            <p>Pedidos com quantidade mínima, preços e prazos específicos são acordados individualmente por meio de proposta comercial formalizada.</p>
+          </div>
+        </section>
+
+        <!-- Política de Frete -->
+        <section id="politica-de-frete" class="scroll-mt-28">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12M10 12v6m4-6v6"/>
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-brand-dark">Política de Frete</h2>
+          </div>
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 prose prose-gray max-w-none">
+            <h3>Modalidades de envio</h3>
+            <p>Trabalhamos com os Correios (PAC e SEDEX) e transportadoras parceiras. A modalidade é definida com o cliente no momento do orçamento conforme prazo e localidade.</p>
+
+            <h3>Cálculo do frete</h3>
+            <p>O frete é calculado individualmente por pedido com base em <strong>peso, dimensões e CEP de destino</strong>. O valor é informado junto ao orçamento antes de qualquer cobrança.</p>
+
+            <h3>Retirada em mãos</h3>
+            <p>Clientes localizados na região de São Paulo podem combinar a <strong>retirada pessoalmente</strong>, sem custo de frete. Consulte disponibilidade pelo WhatsApp.</p>
+
+            <h3>Prazo de entrega</h3>
+            <p>O prazo de entrega é contado a partir da <strong>data de despacho</strong>, após a conclusão da produção. Prazos dos Correios podem variar por região e sazonalidade.</p>
+
+            <h3>Rastreamento</h3>
+            <p>Após o despacho, o código de rastreamento é enviado ao cliente via WhatsApp ou e-mail.</p>
+
+            <h3>Avaria no transporte</h3>
+            <p>Em caso de avaria ou extravio durante o transporte, entre em contato imediatamente. Providenciaremos o ressarcimento junto à transportadora ou a reimpressão da peça.</p>
+          </div>
+        </section>
+
+        <!-- Informações de Contato -->
+        <section id="informacoes-de-contato" class="scroll-mt-28">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-brand-dark">Informações de Contato</h2>
+          </div>
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-full bg-[#25D366]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-[#25D366]" fill="currentColor" viewBox="0 0 32 32">
+                    <path d="M16 0C7.164 0 0 7.163 0 16c0 2.82.736 5.463 2.017 7.76L0 32l8.48-2.008A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.307 19.346c-.4-.2-2.368-1.168-2.735-1.3-.367-.133-.633-.2-.9.2-.267.4-1.033 1.3-1.267 1.567-.233.267-.467.3-.867.1-.4-.2-1.687-.622-3.213-1.98-1.187-1.058-1.987-2.365-2.22-2.765-.233-.4-.025-.616.175-.815.18-.18.4-.467.6-.7.2-.233.267-.4.4-.667.133-.267.067-.5-.033-.7-.1-.2-.9-2.168-1.233-2.967-.325-.779-.656-.673-.9-.685l-.767-.013c-.267 0-.7.1-1.067.5-.367.4-1.4 1.367-1.4 3.333s1.433 3.867 1.633 4.133c.2.267 2.82 4.3 6.833 6.033.954.413 1.7.66 2.28.844.958.306 1.832.263 2.522.159.77-.114 2.368-.968 2.702-1.903.333-.933.333-1.733.233-1.9-.1-.167-.367-.267-.767-.467z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-widest text-[#6B7280] mb-1">WhatsApp</p>
+                  <a
+                    href="https://wa.me/5511982621165"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-brand-dark font-semibold hover:text-accent transition-colors"
+                  >
+                    (11) 98262-1165
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-widest text-[#6B7280] mb-1">E-mail</p>
+                  <a
+                    href="mailto:contato@crossideas.com.br"
+                    class="text-brand-dark font-semibold hover:text-accent transition-colors"
+                  >
+                    contato@crossideas.com.br
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-full bg-brand-dark/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-widest text-[#6B7280] mb-1">Horário de atendimento</p>
+                  <p class="text-brand-dark font-semibold">Seg–Sex, 9h às 18h</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-full bg-brand-dark/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-widest text-[#6B7280] mb-1">Localização</p>
+                  <p class="text-brand-dark font-semibold">São Paulo — SP, Brasil</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-gray-100 text-center">
+              <a
+                href="https://wa.me/5511982621165"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-primary inline-flex items-center gap-2"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 32 32">
+                  <path d="M16 0C7.164 0 0 7.163 0 16c0 2.82.736 5.463 2.017 7.76L0 32l8.48-2.008A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.307 19.346c-.4-.2-2.368-1.168-2.735-1.3-.367-.133-.633-.2-.9.2-.267.4-1.033 1.3-1.267 1.567-.233.267-.467.3-.867.1-.4-.2-1.687-.622-3.213-1.98-1.187-1.058-1.987-2.365-2.22-2.765-.233-.4-.025-.616.175-.815.18-.18.4-.467.6-.7.2-.233.267-.4.4-.667.133-.267.067-.5-.033-.7-.1-.2-.9-2.168-1.233-2.967-.325-.779-.656-.673-.9-.685l-.767-.013c-.267 0-.7.1-1.067.5-.367.4-1.4 1.367-1.4 3.333s1.433 3.867 1.633 4.133c.2.267 2.82 4.3 6.833 6.033.954.413 1.7.66 2.28.844.958.306 1.832.263 2.522.159.77-.114 2.368-.968 2.702-1.903.333-.933.333-1.733.233-1.9-.1-.167-.367-.267-.767-.467z"/>
+                </svg>
+                Falar pelo WhatsApp
+              </a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Voltar ao início -->
+      <div class="text-center mt-16">
+        <a href="/" class="text-sm text-[#6B7280] hover:text-brand-dark transition-colors">
+          ← Voltar ao site
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+  <WhatsAppButton />
+</Layout>

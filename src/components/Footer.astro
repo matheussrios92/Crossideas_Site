@@ -10,23 +10,31 @@ const navLinks = [
   { href: '#contato', label: 'Contato' },
   { href: '#faq', label: 'FAQ' },
 ];
+
+const policyLinks = [
+  { href: '/politicas#politica-de-reembolso', label: 'Política de Reembolso' },
+  { href: '/politicas#politica-de-privacidade', label: 'Política de Privacidade' },
+  { href: '/politicas#termos-de-servico', label: 'Termos de Serviço' },
+  { href: '/politicas#politica-de-frete', label: 'Política de Frete' },
+  { href: '/politicas#informacoes-de-contato', label: 'Informações de Contato' },
+];
 ---
 
 <footer class="bg-brand-dark text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
       <!-- Brand -->
       <div>
         <a href="#inicio" class="inline-block mb-4">
           <span class="text-2xl font-black tracking-tight">
-            CROSS<span class="text-accent">IDEAS</span>
+            <span class="text-secondary">CROSS</span><span class="text-brand-mid">IDEAS</span>
           </span>
         </a>
         <p class="text-gray-400 text-sm leading-relaxed mb-4">
           Especialistas em impressão 3D para o mercado B2B. Troféus, brindes militares e
           esportivos com alta precisão e personalização.
         </p>
-        <p class="text-accent font-semibold text-sm italic">
+        <p class="text-secondary font-semibold text-sm italic">
           "Em Evolução Constante"
         </p>
       </div>
@@ -39,6 +47,27 @@ const navLinks = [
         <ul class="space-y-2">
           {
             navLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-gray-400 hover:text-accent transition-colors text-sm"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Políticas -->
+      <div>
+        <h3 class="font-semibold text-white mb-4 uppercase text-xs tracking-widest">
+          Políticas
+        </h3>
+        <ul class="space-y-2">
+          {
+            policyLinks.map((link) => (
               <li>
                 <a
                   href={link.href}
