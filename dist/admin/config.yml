@@ -97,6 +97,41 @@ collections:
               - { label: "Descrição", name: "description", widget: "text" }
 
   # ──────────────────────────────────────────────
+  # POLÍTICAS & TERMOS (conteúdo editável em Markdown)
+  # ──────────────────────────────────────────────
+  - name: "politicas"
+    label: "📄 Políticas & Termos"
+    files:
+
+      - name: "reembolso"
+        label: "Política de Reembolso"
+        file: "src/content/politicas/reembolso.md"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Conteúdo", name: "body", widget: "markdown" }
+
+      - name: "privacidade"
+        label: "Política de Privacidade"
+        file: "src/content/politicas/privacidade.md"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Conteúdo", name: "body", widget: "markdown" }
+
+      - name: "termos"
+        label: "Termos de Serviço"
+        file: "src/content/politicas/termos-de-servico.md"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Conteúdo", name: "body", widget: "markdown" }
+
+      - name: "frete"
+        label: "Política de Frete"
+        file: "src/content/politicas/frete.md"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Conteúdo", name: "body", widget: "markdown" }
+
+  # ──────────────────────────────────────────────
   # CATEGORIAS DE PRODUTO (Taxonomia dinâmica)
   # Crie novas categorias livremente — aparecem
   # automaticamente nos filtros do catálogo

@@ -1,5 +1,14 @@
 import { defineCollection, z } from 'astro:content';
 
+const politicas = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    anchor: z.string(),
+    order: z.number(),
+  }),
+});
+
 const categories = defineCollection({
   type: 'content',
   schema: z.object({
@@ -38,4 +47,4 @@ const faq = defineCollection({
   }),
 });
 
-export const collections = { categories, products, reviews, faq };
+export const collections = { politicas, categories, products, reviews, faq };
