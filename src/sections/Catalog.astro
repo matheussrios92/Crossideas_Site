@@ -3,7 +3,12 @@ import { getCollection } from 'astro:content';
 import ProductCard from '../components/ProductCard.astro';
 
 const allProducts = await getCollection('products');
-const categories = ['Todos', '3D Militares', '3D Esportivos'] as const;
+const allCategories = await getCollection('categories');
+
+// Categorias ordenadas alfabeticamente, vindas do CMS
+const categoryNames = allCategories
+  .map((c) => c.data.title)
+  .sort((a, b) => a.localeCompare(b, 'pt'));
 ---
 
 <section id="catalogo" class="py-24 bg-white">
@@ -17,51 +22,46 @@ const categories = ['Todos', '3D Militares', '3D Esportivos'] as const;
         Explore nossa linha de troféus e brindes personalizados para sua organização.
       </p>
 
-      <!-- Filter Buttons -->
+      <!-- Filtros gerados dinamicamente pelas categorias do CMS -->
       <div class="flex flex-wrap justify-center gap-3 mt-8" id="catalog-filters">
-        {
-          categories.map((cat) => (
-            <button
-              class="filter-btn px-5 py-2 rounded-full border-2 font-medium text-sm transition-all duration-200"
-              class:list={[
-                cat === 'Todos'
-                  ? 'border-accent bg-accent text-white'
-                  : 'border-gray-300 text-[#6B7280] hover:border-accent hover:text-accent',
-              ]}
-              data-filter={cat}
-            >
-              {cat}
-            </button>
-          ))
-        }
+        <button
+          class="filter-btn px-5 py-2 rounded-full border-2 font-medium text-sm transition-all duration-200 border-accent bg-accent text-white"
+          data-filter="Todos"
+        >
+          Todos
+        </button>
+        {categoryNames.map((cat) => (
+          <button
+            class="filter-btn px-5 py-2 rounded-full border-2 font-medium text-sm transition-all duration-200 border-gray-300 text-[#6B7280] hover:border-accent hover:text-accent"
+            data-filter={cat}
+          >
+            {cat}
+          </button>
+        ))}
       </div>
     </div>
 
-    <!-- Product Grid -->
+    <!-- Grid de produtos -->
     <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        allProducts.map((product) => (
-          <div class="product-item" data-category={product.data.category}>
-            <ProductCard
-              title={product.data.title}
-              category={product.data.category}
-              description={product.data.description}
-              material={product.data.material}
-              image={product.data.image}
-              featured={product.data.featured}
-            />
-          </div>
-        ))
-      }
+      {allProducts.map((product) => (
+        <div class="product-item" data-category={product.data.category}>
+          <ProductCard
+            title={product.data.title}
+            category={product.data.category}
+            description={product.data.description}
+            material={product.data.material}
+            image={product.data.image}
+            featured={product.data.featured}
+          />
+        </div>
+      ))}
     </div>
 
-    {
-      allProducts.length === 0 && (
-        <p class="text-center text-[#6B7280] mt-8">
-          Nenhum produto cadastrado ainda. Adicione produtos via painel CMS.
-        </p>
-      )
-    }
+    {allProducts.length === 0 && (
+      <p class="text-center text-[#6B7280] mt-8">
+        Nenhum produto cadastrado ainda. Adicione peças pelo painel CMS.
+      </p>
+    )}
   </div>
 </section>
 
@@ -73,7 +73,6 @@ const categories = ['Todos', '3D Militares', '3D Esportivos'] as const;
     btn.addEventListener('click', () => {
       const filter = btn.getAttribute('data-filter')!;
 
-      // Update button styles
       filterBtns.forEach((b) => {
         b.classList.remove('border-accent', 'bg-accent', 'text-white');
         b.classList.add('border-gray-300', 'text-[#6B7280]');
@@ -81,14 +80,9 @@ const categories = ['Todos', '3D Militares', '3D Esportivos'] as const;
       btn.classList.remove('border-gray-300', 'text-[#6B7280]');
       btn.classList.add('border-accent', 'bg-accent', 'text-white');
 
-      // Filter products
       productItems.forEach((item) => {
         const el = item as HTMLElement;
-        if (filter === 'Todos' || el.dataset.category === filter) {
-          el.style.display = '';
-        } else {
-          el.style.display = 'none';
-        }
+        el.style.display = (filter === 'Todos' || el.dataset.category === filter) ? '' : 'none';
       });
     });
   });

@@ -1,0 +1,16 @@
+{
+  "badge": "Quem Somos",
+  "heading": "Transformamos ideias em",
+  "heading_highlight": "peças únicas",
+  "paragraph1": "A Crossideas é especialista em impressão 3D para o mercado B2B. Criamos troféus, brindes e peças personalizadas com alta precisão para organizações militares, clubes esportivos e empresas que valorizam premiação de qualidade.",
+  "paragraph2": "Do briefing à entrega, cuidamos de cada detalhe do seu projeto. Nossa missão é traduzir a identidade da sua marca em objetos tridimensionais que impressionam e ficam na memória de quem recebe.",
+  "stat_number": "+500",
+  "stat_label": "peças entregues",
+  "image": "",
+  "differentials": [
+    { "icon": "🎯", "label": "Precisão milimétrica" },
+    { "icon": "⚡", "label": "Entrega ágil" },
+    { "icon": "🎨", "label": "100% personalizado" },
+    { "icon": "🏆", "label": "Qualidade premium" }
+  ]
+}

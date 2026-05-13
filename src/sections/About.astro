@@ -1,4 +1,5 @@
 ---
+import about from '../data/about.json';
 ---
 
 <section id="sobre" class="py-24 bg-brand-light">
@@ -7,60 +8,48 @@
       <!-- Text -->
       <div>
         <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
-          Quem Somos
+          {about.badge}
         </p>
         <h2 class="section-heading">
-          Transformamos ideias em<br />
-          <span class="text-accent">peças únicas</span>
+          {about.heading}<br />
+          <span class="text-accent">{about.heading_highlight}</span>
         </h2>
-        <p class="text-[#374151] text-base leading-relaxed mb-6">
-          A Crossideas é especialista em impressão 3D para o mercado B2B. Criamos troféus,
-          brindes e peças personalizadas com alta precisão para organizações militares,
-          clubes esportivos e empresas que valorizam premiação de qualidade.
-        </p>
-        <p class="text-[#374151] text-base leading-relaxed mb-8">
-          Do briefing à entrega, cuidamos de cada detalhe do seu projeto. Nossa missão é
-          traduzir a identidade da sua marca em objetos tridimensionais que impressionam e
-          ficam na memória de quem recebe.
-        </p>
+        <p class="text-[#374151] text-base leading-relaxed mb-6">{about.paragraph1}</p>
+        <p class="text-[#374151] text-base leading-relaxed mb-8">{about.paragraph2}</p>
 
-        <!-- Diferenciais -->
+        <!-- Diferenciais dinâmicos -->
         <div class="grid grid-cols-2 gap-4">
-          {
-            [
-              { icon: '🎯', label: 'Precisão milimétrica' },
-              { icon: '⚡', label: 'Entrega ágil' },
-              { icon: '🎨', label: '100% personalizado' },
-              { icon: '🏆', label: 'Qualidade premium' },
-            ].map((item) => (
-              <div class="flex items-center gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-100">
-                <span class="text-xl">{item.icon}</span>
-                <span class="text-sm font-medium text-brand-dark">{item.label}</span>
-              </div>
-            ))
-          }
+          {about.differentials.map((item) => (
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-100">
+              <span class="text-xl">{item.icon}</span>
+              <span class="text-sm font-medium text-brand-dark">{item.label}</span>
+            </div>
+          ))}
         </div>
       </div>
 
-      <!-- Visual placeholder -->
+      <!-- Visual -->
       <div class="relative">
-        <div
-          class="aspect-square rounded-2xl bg-gradient-to-br from-accent/10 to-accent/30 flex items-center justify-center border border-accent/20 overflow-hidden"
-        >
-          <!-- Substituir por imagem real quando disponível -->
-          <div class="text-center p-8">
-            <div class="text-8xl mb-4">🏆</div>
-            <p class="text-accent font-semibold">Imagem institucional</p>
-            <p class="text-[#6B7280] text-sm mt-1">Em breve</p>
-          </div>
+        <div class="aspect-square rounded-2xl bg-gradient-to-br from-accent/10 to-accent/30 flex items-center justify-center border border-accent/20 overflow-hidden">
+          {about.image ? (
+            <img
+              src={about.image}
+              alt="Crossideas — imagem institucional"
+              class="w-full h-full object-cover"
+            />
+          ) : (
+            <div class="text-center p-8">
+              <div class="text-8xl mb-4">🏆</div>
+              <p class="text-accent font-semibold">Imagem institucional</p>
+              <p class="text-[#6B7280] text-sm mt-1">Configure no painel CMS</p>
+            </div>
+          )}
         </div>
 
-        <!-- Tagline card flutuante -->
-        <div
-          class="absolute -bottom-6 -left-6 bg-brand-dark text-white rounded-xl px-6 py-4 shadow-xl"
-        >
-          <p class="text-accent font-black text-2xl">+500</p>
-          <p class="text-sm text-white/70">peças entregues</p>
+        <!-- Card de destaque flutuante -->
+        <div class="absolute -bottom-6 -left-6 bg-brand-dark text-white rounded-xl px-6 py-4 shadow-xl">
+          <p class="text-accent font-black text-2xl">{about.stat_number}</p>
+          <p class="text-sm text-white/70">{about.stat_label}</p>
         </div>
       </div>
     </div>

@@ -8,11 +8,7 @@
           "type": "string"
         },
         "category": {
-          "type": "string",
-          "enum": [
-            "3D Militares",
-            "3D Esportivos"
-          ]
+          "type": "string"
         },
         "description": {
           "type": "string"

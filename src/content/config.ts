@@ -1,10 +1,18 @@
 import { defineCollection, z } from 'astro:content';
 
+const categories = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+  }),
+});
+
 const products = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    category: z.enum(['3D Militares', '3D Esportivos']),
+    category: z.string(), // string livre — gerenciado via relation no CMS
     description: z.string(),
     material: z.string(),
     image: z.string(),
@@ -30,4 +38,4 @@ const faq = defineCollection({
   }),
 });
 
-export const collections = { products, reviews, faq };
+export const collections = { categories, products, reviews, faq };

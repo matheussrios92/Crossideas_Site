@@ -8,8 +8,113 @@ public_folder: "/uploads"
 locale: "pt"
 
 collections:
+
+  # ──────────────────────────────────────────────
+  # CONFIGURAÇÕES GLOBAIS (Files Collection)
+  # Edite textos, contatos e conteúdo de cada seção
+  # ──────────────────────────────────────────────
+  - name: "configuracoes"
+    label: "⚙️ Configurações do Site"
+    files:
+
+      - name: "site"
+        label: "Informações Gerais & Contato"
+        file: "src/data/site.json"
+        format: json
+        fields:
+          - { label: "Tagline da marca", name: "tagline", widget: "string", hint: "Aparece no Hero e rodapé. Ex: Em Evolução Constante" }
+          - { label: "WhatsApp (só números, com DDI)", name: "whatsapp", widget: "string", hint: "Ex: 5511982621165" }
+          - { label: "Mensagem padrão do botão WhatsApp", name: "whatsapp_message", widget: "string" }
+          - { label: "E-mail", name: "email", widget: "string" }
+          - { label: "Telefone (formato exibição)", name: "phone", widget: "string", hint: "Ex: (11) 98262-1165" }
+          - { label: "Localização", name: "location", widget: "string", hint: "Ex: São Paulo — SP, Brasil" }
+          - { label: "Horário de atendimento", name: "business_hours", widget: "string", hint: "Ex: Seg–Sex, 9h às 18h" }
+          - { label: "URL Instagram", name: "instagram_url", widget: "string", required: false, hint: "Cole a URL completa ou deixe em branco para ocultar" }
+          - { label: "URL Facebook", name: "facebook_url", widget: "string", required: false }
+          - { label: "URL LinkedIn", name: "linkedin_url", widget: "string", required: false }
+
+      - name: "hero"
+        label: "Hero — Seção Inicial"
+        file: "src/data/hero.json"
+        format: json
+        fields:
+          - { label: "Etiqueta topo (vermelho)", name: "badge", widget: "string" }
+          - { label: "Título — linha 1", name: "heading_line1", widget: "string" }
+          - { label: "Título — palavra em destaque (dourado)", name: "heading_highlight", widget: "string" }
+          - { label: "Título — linha 3", name: "heading_line3", widget: "string" }
+          - { label: "Subtítulo", name: "subtitle", widget: "text" }
+          - { label: "Botão principal", name: "cta_primary", widget: "string" }
+          - { label: "Botão secundário", name: "cta_secondary", widget: "string" }
+          - { label: "Imagem de fundo (opcional)", name: "background_image", widget: "image", required: false, hint: "Se vazio, usa o gradiente padrão da marca" }
+
+      - name: "sobre"
+        label: "Quem Somos — Seção Sobre"
+        file: "src/data/about.json"
+        format: json
+        fields:
+          - { label: "Etiqueta topo", name: "badge", widget: "string" }
+          - { label: "Título (parte 1)", name: "heading", widget: "string" }
+          - { label: "Título — parte em destaque (dourado)", name: "heading_highlight", widget: "string" }
+          - { label: "Parágrafo 1", name: "paragraph1", widget: "text" }
+          - { label: "Parágrafo 2", name: "paragraph2", widget: "text" }
+          - { label: "Número do destaque", name: "stat_number", widget: "string", hint: "Ex: +500" }
+          - { label: "Texto do destaque", name: "stat_label", widget: "string", hint: "Ex: peças entregues" }
+          - { label: "Imagem institucional", name: "image", widget: "image", required: false, hint: "Se vazio, exibe ícone placeholder" }
+          - name: "differentials"
+            label: "Diferenciais"
+            widget: "list"
+            hint: "Adicione ou remova cards de diferenciais"
+            fields:
+              - { label: "Ícone (emoji)", name: "icon", widget: "string", hint: "Cole um emoji aqui. Ex: 🎯" }
+              - { label: "Texto", name: "label", widget: "string" }
+
+      - name: "video"
+        label: "Vídeo de Destaque"
+        file: "src/data/video.json"
+        format: json
+        fields:
+          - { label: "Etiqueta topo", name: "badge", widget: "string" }
+          - { label: "Título", name: "heading", widget: "string" }
+          - { label: "Subtítulo", name: "subtitle", widget: "text" }
+          - { label: "ID do vídeo no YouTube", name: "youtube_id", widget: "string", required: false, hint: "Apenas o código após watch?v= — ex: dQw4w9WgXcQ. Deixe em branco para ocultar a seção." }
+
+      - name: "como-adquirir"
+        label: "Como Adquirir — Etapas"
+        file: "src/data/how-to-buy.json"
+        format: json
+        fields:
+          - { label: "Etiqueta topo", name: "badge", widget: "string" }
+          - { label: "Título", name: "heading", widget: "string" }
+          - { label: "Subtítulo", name: "subtitle", widget: "text" }
+          - { label: "Texto do botão CTA", name: "cta_text", widget: "string" }
+          - name: "steps"
+            label: "Etapas do processo"
+            widget: "list"
+            hint: "Adicione, remova ou reordene as etapas"
+            fields:
+              - { label: "Ícone (emoji)", name: "icon", widget: "string", hint: "Cole um emoji. Ex: 💬" }
+              - { label: "Título da etapa", name: "title", widget: "string" }
+              - { label: "Descrição", name: "description", widget: "text" }
+
+  # ──────────────────────────────────────────────
+  # CATEGORIAS DE PRODUTO (Taxonomia dinâmica)
+  # Crie novas categorias livremente — aparecem
+  # automaticamente nos filtros do catálogo
+  # ──────────────────────────────────────────────
+  - name: "categories"
+    label: "🏷️ Categorias de Produto"
+    folder: "src/content/categories"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nome da Categoria", name: "title", widget: "string" }
+      - { label: "Descrição (opcional)", name: "description", widget: "text", required: false }
+
+  # ──────────────────────────────────────────────
+  # CATÁLOGO DE PEÇAS
+  # ──────────────────────────────────────────────
   - name: "products"
-    label: "Peças do Catálogo"
+    label: "📦 Peças do Catálogo"
     folder: "src/content/products"
     create: true
     slug: "{{slug}}"
@@ -17,23 +122,22 @@ collections:
       - { label: "Nome da Peça", name: "title", widget: "string" }
       - label: "Categoria"
         name: "category"
-        widget: "select"
-        options:
-          - { label: "3D Militares", value: "3D Militares" }
-          - { label: "3D Esportivos", value: "3D Esportivos" }
+        widget: "relation"
+        collection: "categories"
+        search_fields: ["title"]
+        value_field: "title"
+        display_fields: ["title"]
+        hint: "Crie novas categorias em '🏷️ Categorias de Produto' antes de usar aqui"
       - { label: "Descrição Curta", name: "description", widget: "text" }
-      - label: "Material Sugerido"
-        name: "material"
-        widget: "string"
-        hint: "Ex: PLA, ABS, Resina"
+      - { label: "Material", name: "material", widget: "string", hint: "Ex: PLA, ABS, Resina" }
       - { label: "Imagem Principal", name: "image", widget: "image" }
-      - label: "Destaque (Mais Vendido)"
-        name: "featured"
-        widget: "boolean"
-        default: false
+      - { label: "Destaque (Mais Vendido)", name: "featured", widget: "boolean", default: false }
 
+  # ──────────────────────────────────────────────
+  # AVALIAÇÕES
+  # ──────────────────────────────────────────────
   - name: "reviews"
-    label: "Avaliações"
+    label: "⭐ Avaliações"
     folder: "src/content/reviews"
     create: true
     slug: "{{slug}}"
@@ -48,8 +152,11 @@ collections:
         max: 5
         value_type: "int"
 
+  # ──────────────────────────────────────────────
+  # FAQ
+  # ──────────────────────────────────────────────
   - name: "faq"
-    label: "FAQ"
+    label: "❓ FAQ"
     folder: "src/content/faq"
     create: true
     slug: "{{slug}}"

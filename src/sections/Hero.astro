@@ -1,35 +1,27 @@
 ---
+import hero from '../data/hero.json';
 ---
 
 <section
   id="inicio"
   class="relative min-h-screen flex items-center justify-center overflow-hidden bg-brand-dark"
 >
-  <!-- Background: placeholder para vídeo ou imagem hero -->
-  <!-- Para ativar vídeo: descomente o bloco <video> abaixo e remova o div de placeholder -->
+  <!-- Fundo: imagem do CMS ou gradiente padrão -->
+  {hero.background_image ? (
+    <img
+      src={hero.background_image}
+      alt="Hero background"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+  ) : (
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-[#0F1A10] to-brand-dark"></div>
+  )}
 
-  <!-- Placeholder visual até o vídeo ser fornecido -->
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-brand-dark via-[#0F1A10] to-brand-dark"
-  ></div>
-
-  <!-- Pattern de fundo decorativo -->
+  <!-- Pattern decorativo -->
   <div
     class="absolute inset-0 opacity-5"
     style="background-image: url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A96E' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"
   ></div>
-
-  <!-- Video (descomente quando tiver o arquivo/URL) -->
-  <!--
-  <video
-    class="absolute inset-0 w-full h-full object-cover"
-    autoplay
-    muted
-    loop
-    playsinline
-    src="/videos/hero.mp4"
-  ></video>
-  -->
 
   <!-- Overlay escuro -->
   <div class="absolute inset-0 bg-black/50"></div>
@@ -37,43 +29,29 @@
   <!-- Content -->
   <div class="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
     <p class="text-secondary font-semibold text-sm uppercase tracking-widest mb-4">
-      Em Evolução Constante
+      {hero.badge}
     </p>
 
     <h1 class="text-5xl sm:text-6xl md:text-7xl font-black text-white leading-tight mb-6">
-      Peças 3D<br />
-      <span class="text-accent">Personalizadas</span><br />
-      para sua Marca
+      {hero.heading_line1}<br />
+      <span class="text-accent">{hero.heading_highlight}</span><br />
+      {hero.heading_line3}
     </h1>
 
     <p class="text-white/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-      Troféus, brindes militares e esportivos em impressão 3D de alta precisão.
-      Soluções B2B para premiação e branding corporativo.
+      {hero.subtitle}
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="#contato" class="btn-primary text-base">
-        Solicitar Orçamento
-      </a>
-      <a href="#catalogo" class="btn-secondary text-base">
-        Ver Catálogo
-      </a>
+      <a href="#contato" class="btn-primary text-base">{hero.cta_primary}</a>
+      <a href="#catalogo" class="btn-secondary text-base">{hero.cta_secondary}</a>
     </div>
 
     <!-- Scroll indicator -->
     <div class="mt-16 flex justify-center animate-bounce">
       <a href="#sobre" aria-label="Rolar para baixo">
-        <svg
-          class="w-6 h-6 text-white/40"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 9l-7 7-7-7"></path>
+        <svg class="w-6 h-6 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
         </svg>
       </a>
     </div>

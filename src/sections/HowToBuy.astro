@@ -1,63 +1,39 @@
 ---
 import HowToBuyStep from '../components/HowToBuyStep.astro';
-
-const steps = [
-  {
-    step: 1,
-    icon: '💬',
-    title: 'Definição do Projeto',
-    description:
-      'Você nos envia o briefing com os detalhes da peça desejada — tema, medidas, quantidade e personalização. Nossa equipe analisa e tira todas as dúvidas.',
-  },
-  {
-    step: 2,
-    icon: '🖥️',
-    title: 'Modelagem 3D',
-    description:
-      'Nossos designers criam o modelo digital tridimensional da sua peça. Você aprova o projeto antes de avançarmos para a produção.',
-  },
-  {
-    step: 3,
-    icon: '📦',
-    title: 'Impressão 3D & Entrega',
-    description:
-      'Com o modelo aprovado, iniciamos a impressão em alta precisão. Após o acabamento e controle de qualidade, enviamos para todo o Brasil.',
-  },
-];
+import data from '../data/how-to-buy.json';
 ---
 
 <section id="como-adquirir" class="py-24 bg-brand-dark">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
-        Processo
+        {data.badge}
       </p>
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-        Como Adquirir suas Peças
-      </h2>
-      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-        Processo simples e transparente do pedido à entrega.
-      </p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">{data.heading}</h2>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">{data.subtitle}</p>
     </div>
 
-    <!-- Steps -->
     <div class="relative">
-      <!-- Connector line (desktop) -->
+      <!-- Linha conectora (desktop) -->
       <div
-        class="hidden md:block absolute top-10 left-1/6 right-1/6 h-0.5 bg-gradient-to-r from-transparent via-accent/40 to-transparent"
+        class="hidden md:block absolute top-10 h-0.5 bg-gradient-to-r from-transparent via-accent/40 to-transparent"
         style="left: 16.66%; right: 16.66%;"
       ></div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {steps.map((step) => <HowToBuyStep {...step} />)}
+      <div class={`grid grid-cols-1 gap-8 ${data.steps.length === 3 ? 'md:grid-cols-3' : data.steps.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-4'}`}>
+        {data.steps.map((step, i) => (
+          <HowToBuyStep
+            step={i + 1}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
       </div>
     </div>
 
-    <!-- CTA -->
     <div class="text-center mt-14">
-      <a href="#contato" class="btn-primary text-base inline-block">
-        Iniciar meu Projeto
-      </a>
+      <a href="#contato" class="btn-primary text-base inline-block">{data.cta_text}</a>
     </div>
   </div>
 </section>

@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import site from '../data/site.json';
 
 const sections = [
   { id: 'politica-de-reembolso', label: 'Política de Reembolso' },
@@ -208,12 +209,12 @@ const sections = [
                 <div>
                   <p class="text-xs font-semibold uppercase tracking-widest text-[#6B7280] mb-1">WhatsApp</p>
                   <a
-                    href="https://wa.me/5511982621165"
+                    href={`https://wa.me/${site.whatsapp}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-brand-dark font-semibold hover:text-accent transition-colors"
                   >
-                    (11) 98262-1165
+                    {site.phone}
                   </a>
                 </div>
               </div>
@@ -227,10 +228,10 @@ const sections = [
                 <div>
                   <p class="text-xs font-semibold uppercase tracking-widest text-[#6B7280] mb-1">E-mail</p>
                   <a
-                    href="mailto:contato@crossideas.com.br"
+                    href={`mailto:${site.email}`}
                     class="text-brand-dark font-semibold hover:text-accent transition-colors"
                   >
-                    contato@crossideas.com.br
+                    {site.email}
                   </a>
                 </div>
               </div>
@@ -243,7 +244,7 @@ const sections = [
                 </div>
                 <div>
                   <p class="text-xs font-semibold uppercase tracking-widest text-[#6B7280] mb-1">Horário de atendimento</p>
-                  <p class="text-brand-dark font-semibold">Seg–Sex, 9h às 18h</p>
+                  <p class="text-brand-dark font-semibold">{site.business_hours}</p>
                 </div>
               </div>
 
@@ -256,14 +257,14 @@ const sections = [
                 </div>
                 <div>
                   <p class="text-xs font-semibold uppercase tracking-widest text-[#6B7280] mb-1">Localização</p>
-                  <p class="text-brand-dark font-semibold">São Paulo — SP, Brasil</p>
+                  <p class="text-brand-dark font-semibold">{site.location}</p>
                 </div>
               </div>
             </div>
 
             <div class="mt-8 pt-6 border-t border-gray-100 text-center">
               <a
-                href="https://wa.me/5511982621165"
+                href={`https://wa.me/${site.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn-primary inline-flex items-center gap-2"
