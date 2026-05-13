@@ -32,6 +32,8 @@ collections:
           - { label: "URL Instagram", name: "instagram_url", widget: "string", required: false, hint: "Cole a URL completa ou deixe em branco para ocultar" }
           - { label: "URL Facebook", name: "facebook_url", widget: "string", required: false }
           - { label: "URL LinkedIn", name: "linkedin_url", widget: "string", required: false }
+          - { label: "Descrição da marca (rodapé)", name: "footer_description", widget: "text", hint: "Texto curto abaixo do logo no rodapé" }
+          - { label: "Texto inferior do rodapé", name: "footer_bottom_text", widget: "string", hint: "Pequeno texto na barra inferior direita" }
 
       - name: "hero"
         label: "Hero — Seção Inicial"
