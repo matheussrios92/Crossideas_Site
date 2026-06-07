@@ -24,7 +24,7 @@ const allReviews = await getCollection('reviews');
             <ReviewCard
               name={review.data.name}
               role={review.data.role}
-              body={review.data.body}
+              body={review.body}
               rating={review.data.rating}
             />
           ))}
