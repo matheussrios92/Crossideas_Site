@@ -11,16 +11,22 @@
       "highlight": "Ícone de upload ou do Whatsapp."
     },
     {
-      "image": "",
-      "title": "Modelagem 3D",
-      "description": "Nossos designers criam o modelo digital tridimensional da sua peça. Você aprova o projeto antes de avançarmos para a produção.",
+      "image": "/uploads/22222222222222.png",
+      "title": "Garantia e Projeção",
+      "description": "Após o pagamento de *50%* do valor, iniciamos a projeção digital.",
+      "highlight": "Você recebera a prévia para aprovar antes de imprimirmos!"
+    },
+    {
+      "image": "/uploads/333333333333.png",
+      "title": "Impressão e Qualidade",
+      "description": "Com o modelo aprovado, iniciamos a impressão em alta precisão. Cuidamos de cada detalhe para você.",
       "highlight": ""
     },
     {
-      "image": "",
-      "title": "Impressão 3D & Entrega",
-      "description": "Com o modelo aprovado, iniciamos a impressão em alta precisão. Após o acabamento e controle de qualidade, enviamos para todo o Brasil.",
-      "highlight": ""
+      "title": "Envio e Conclusão",
+      "description": "Assim que ficar pronto, solicitamos os *50%* restantes e enviamos seu pedido.",
+      "highlight": "Frete fixo já incluso no valor total.",
+      "image": "/uploads/444444444.avif"
     }
   ]
 }
