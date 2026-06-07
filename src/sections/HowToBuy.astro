@@ -1,39 +1,106 @@
 ---
-import HowToBuyStep from '../components/HowToBuyStep.astro';
 import data from '../data/how-to-buy.json';
 ---
 
-<section id="como-adquirir" class="py-24 bg-brand-dark">
+<section id="como-adquirir" class="py-24 bg-brand-dark overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
-        {data.badge}
-      </p>
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-3">{data.badge}</p>
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">{data.heading}</h2>
       <p class="text-gray-400 text-lg max-w-2xl mx-auto">{data.subtitle}</p>
     </div>
 
-    <div class="relative">
-      <!-- Linha conectora (desktop) -->
-      <div
-        class="hidden md:block absolute top-10 h-0.5 bg-gradient-to-r from-transparent via-accent/40 to-transparent"
-        style="left: 16.66%; right: 16.66%;"
-      ></div>
+    <!-- Cards: scroll horizontal no mobile → grid no desktop -->
+    <div
+      id="steps-track"
+      class="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-6
+             md:grid md:grid-cols-2 md:overflow-visible md:pb-0
+             lg:grid-cols-4
+             [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]"
+    >
+      {data.steps.map((step, i) => (
+        <div class="group flex-none w-[272px] snap-start md:w-auto
+                    rounded-2xl overflow-hidden flex flex-col
+                    bg-white/[0.04] border border-white/10
+                    shadow-lg hover:shadow-2xl hover:-translate-y-1
+                    transition-all duration-300">
 
-      <div class={`grid grid-cols-1 gap-8 ${data.steps.length === 3 ? 'md:grid-cols-3' : data.steps.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-4'}`}>
-        {data.steps.map((step, i) => (
-          <HowToBuyStep
-            step={i + 1}
-            icon={step.icon}
-            title={step.title}
-            description={step.description}
-          />
-        ))}
-      </div>
+          <!-- Topo: imagem + número + título -->
+          <div class="relative h-52 overflow-hidden flex-shrink-0 bg-brand-mid/20">
+            {step.image ? (
+              <img
+                src={step.image}
+                alt={step.title}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+            ) : (
+              <div class="w-full h-full bg-gradient-to-br from-brand-mid/40 to-transparent" />
+            )}
+
+            <!-- Gradiente para legibilidade do texto -->
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-black/20 to-transparent" />
+
+            <!-- Número grande decorativo -->
+            <span class="absolute top-3 left-4 text-8xl font-black leading-none select-none text-white/10">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+
+            <!-- Título sobre a imagem -->
+            <div class="absolute bottom-4 left-4 right-4">
+              <h3 class="text-white font-bold text-base leading-snug drop-shadow-md">{step.title}</h3>
+            </div>
+          </div>
+
+          <!-- Corpo: label de passo + descrição + destaque -->
+          <div class="p-5 flex flex-col gap-3 flex-1">
+            <span class="text-accent font-semibold text-xs tracking-widest uppercase">
+              Passo {i + 1}
+            </span>
+
+            <p class="text-gray-400 text-sm leading-relaxed flex-1">{step.description}</p>
+
+            {step.highlight && (
+              <div class="flex items-start gap-2 pt-3 border-t border-white/10 mt-auto">
+                <span class="text-secondary flex-shrink-0 mt-0.5">✦</span>
+                <p class="text-secondary text-xs font-medium leading-snug">{step.highlight}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
     </div>
 
-    <div class="text-center mt-14">
+    <!-- Indicadores de scroll (mobile) -->
+    <div class="flex justify-center gap-2 mt-5 md:hidden">
+      {data.steps.map((_, i) => (
+        <span
+          data-dot={i}
+          class={`step-dot w-2 h-2 rounded-full transition-colors duration-200 ${i === 0 ? 'bg-accent' : 'bg-white/20'}`}
+        />
+      ))}
+    </div>
+
+    <div class="text-center mt-12">
       <a href="#contato" class="btn-primary text-base inline-block">{data.cta_text}</a>
     </div>
   </div>
 </section>
+
+<script>
+  const track = document.getElementById('steps-track');
+  const dots = document.querySelectorAll('.step-dot');
+
+  if (track && dots.length) {
+    track.addEventListener('scroll', () => {
+      const cardWidth = (track.firstElementChild as HTMLElement)?.offsetWidth ?? 272;
+      const active = Math.round(track.scrollLeft / (cardWidth + 20));
+      dots.forEach((d, i) => {
+        d.classList.toggle('bg-accent', i === active);
+        d.classList.toggle('bg-white/20', i !== active);
+      });
+    }, { passive: true });
+  }
+</script>

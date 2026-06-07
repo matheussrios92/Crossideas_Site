@@ -33,9 +33,9 @@ const reviews = defineCollection({
   type: 'content',
   schema: z.object({
     name: z.string(),
-    role: z.string(),
+    role: z.string().optional(),
     body: z.string(),
-    rating: z.number().min(1).max(5),
+    rating: z.number().min(1).max(5).optional(),
   }),
 });
 

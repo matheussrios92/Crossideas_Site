@@ -5,19 +5,22 @@
   "cta_text": "Iniciar meu Projeto",
   "steps": [
     {
-      "icon": "💬",
+      "image": "",
       "title": "Definição do Projeto",
-      "description": "Você nos envia o briefing com os detalhes da peça desejada — tema, medidas, quantidade e personalização. Nossa equipe analisa e tira todas as dúvidas."
+      "description": "Você nos envia o briefing com os detalhes da peça desejada — tema, medidas, quantidade e personalização. Nossa equipe analisa e tira todas as dúvidas.",
+      "highlight": ""
     },
     {
-      "icon": "🖥️",
+      "image": "",
       "title": "Modelagem 3D",
-      "description": "Nossos designers criam o modelo digital tridimensional da sua peça. Você aprova o projeto antes de avançarmos para a produção."
+      "description": "Nossos designers criam o modelo digital tridimensional da sua peça. Você aprova o projeto antes de avançarmos para a produção.",
+      "highlight": ""
     },
     {
-      "icon": "📦",
+      "image": "",
       "title": "Impressão 3D & Entrega",
-      "description": "Com o modelo aprovado, iniciamos a impressão em alta precisão. Após o acabamento e controle de qualidade, enviamos para todo o Brasil."
+      "description": "Com o modelo aprovado, iniciamos a impressão em alta precisão. Após o acabamento e controle de qualidade, enviamos para todo o Brasil.",
+      "highlight": ""
     }
   ]
 }

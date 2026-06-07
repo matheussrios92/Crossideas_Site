@@ -92,11 +92,12 @@ collections:
           - name: "steps"
             label: "Etapas do processo"
             widget: "list"
-            hint: "Adicione, remova ou reordene as etapas"
+            hint: "Adicione, remova ou reordene as etapas. O número do passo é gerado automaticamente pela ordem."
             fields:
-              - { label: "Ícone (emoji)", name: "icon", widget: "string", hint: "Cole um emoji. Ex: 💬" }
+              - { label: "Imagem do passo", name: "image", widget: "image", required: false, hint: "Imagem de fundo ou ilustração. Se vazio, exibe placeholder." }
               - { label: "Título da etapa", name: "title", widget: "string" }
               - { label: "Descrição", name: "description", widget: "text" }
+              - { label: "Destaque / Dica", name: "highlight", widget: "string", required: false, hint: "Texto de ênfase exibido na base do card. Ex: Diferencial exclusivo..." }
 
   # ──────────────────────────────────────────────
   # POLÍTICAS & TERMOS (conteúdo editável em Markdown)
@@ -180,7 +181,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Nome do Cliente", name: "name", widget: "string" }
-      - { label: "Empresa / Cargo", name: "role", widget: "string" }
+      - { label: "Empresa / Cargo", name: "role", widget: "string", required: false }
       - { label: "Texto da Avaliação", name: "body", widget: "text" }
       - label: "Nota (1 a 5)"
         name: "rating"
@@ -188,6 +189,7 @@ collections:
         min: 1
         max: 5
         value_type: "int"
+        required: false
 
   # ──────────────────────────────────────────────
   # FAQ
