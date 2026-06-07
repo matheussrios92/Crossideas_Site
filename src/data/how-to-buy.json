@@ -5,10 +5,10 @@
   "cta_text": "Iniciar meu Projeto",
   "steps": [
     {
-      "image": "",
-      "title": "Definição do Projeto",
-      "description": "Você nos envia o briefing com os detalhes da peça desejada — tema, medidas, quantidade e personalização. Nossa equipe analisa e tira todas as dúvidas.",
-      "highlight": ""
+      "image": "/uploads/111111.png",
+      "title": "Envio da arte",
+      "description": "Mande sua arte pelo nosso whatsapp:\nPode ser um arquivo 3D ou apenas uma foto de referência",
+      "highlight": "Ícone de upload ou do Whatsapp."
     },
     {
       "image": "",
