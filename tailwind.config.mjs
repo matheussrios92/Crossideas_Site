@@ -17,8 +17,16 @@ export default {
         'secondary-dark': '#7A2320',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
         logo: ['Montserrat', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        // Escala fluida (clamp) — títulos de destaque (Hero)
+        display: ['clamp(2.25rem, 1.35rem + 4.5vw, 4.75rem)', { lineHeight: '1.15', letterSpacing: '-0.01em' }],
+        // Escala fluida — títulos de página (ex: Políticas)
+        'heading-lg': ['clamp(1.875rem, 1.4rem + 2.4vw, 3rem)', { lineHeight: '1.2' }],
+        // Escala fluida — títulos de secção (About, Catalog, Faq, Contact, HowToBuy, VideoSection)
+        heading: ['clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem)', { lineHeight: '1.25' }],
       },
     },
   },
